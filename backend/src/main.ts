@@ -1,6 +1,6 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app/app.module';
-import { corsConfig, } from './utils/config';
+// import { corsConfig, } from './utils/config';
 import { ValidationPipe } from '@nestjs/common';
 import * as session from 'express-session'; // express-session ni chaqiring
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
@@ -13,7 +13,7 @@ let store = new MongoDBStore({
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  app.enableCors(corsConfig());
+  app.enableCors();
   store.on('error', function(error) {
     console.log(error);
   });
